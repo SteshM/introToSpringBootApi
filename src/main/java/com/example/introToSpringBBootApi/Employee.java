@@ -21,7 +21,7 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.id_number = id_number;
-        this.emp_no = emp_no;
+        this.emp_no = String.valueOf(emp_no);
         this.Dept_name = Dept_name;
         this.contact = contact;
 
