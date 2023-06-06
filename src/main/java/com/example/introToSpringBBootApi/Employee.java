@@ -1,11 +1,12 @@
 package com.example.introToSpringBBootApi;
 
+
 public class Employee {
-    public long id;
+    public Long id;
     public String name;
     public String emp_no;
-    public Integer id_number;
-    public Integer contact;
+    public int id_number;
+    public int contact;
     public String email;
     public String Dept_name;
 
