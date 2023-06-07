@@ -36,4 +36,17 @@ public class EmployeeService {
         System.out.println("data"+ employeeEntity);
         return employeeEntity;
     }
+
+    public EmployeeEntity updateEmployee(Long id , Employee employee) {
+        EmployeeEntity employeeEntity = employeeRepository.findEmployeeById(id);
+        employeeEntity.setName(employee.getName());
+        employeeEntity.setEmpNumber(employee.getEmp_no());
+        employeeEntity.setIdNumber(employee.getId_number());
+        employeeEntity.setContact(employee.getContact());
+        employeeEntity.setEmail(employee.getEmail());
+        employeeEntity.setDeptName(employee.getDept_name());
+        ;
+        return  employeeRepository.save(employeeEntity);
+
+    }
 }

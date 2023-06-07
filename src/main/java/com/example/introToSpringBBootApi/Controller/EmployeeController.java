@@ -45,11 +45,21 @@ public class EmployeeController {
         logger.info("Fetched details of {}employees",allData.size());
         return new ResponseEntity<>(allData,HttpStatus.OK);
     }
-
+//Fetching details of a single student
     @GetMapping("/employee/{id}")
     public ResponseEntity<?> getEmployee(@PathVariable Long id){
         EmployeeEntity singleEmployee = employeeService.getEmployee(id);
         logger.info("employee fetched : {}", singleEmployee);
         return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
     }
+//Updating details of a single student
+    @PutMapping("/employee/{id}")
+        public ResponseEntity<?>replaceEmployee(@PathVariable Long id , @RequestBody Employee employee){
+        EmployeeEntity singleEmployee = employeeService.updateEmployee(id , employee);
+        logger.info("About to update details of an employee with id {}" , id);
+        return new ResponseEntity<>(singleEmployee,HttpStatus.OK);
+    }
+
+
+
 }
