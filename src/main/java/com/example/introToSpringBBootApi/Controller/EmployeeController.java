@@ -1,18 +1,33 @@
 package com.example.introToSpringBBootApi.Controller;
 
-import com.example.introToSpringBBootApi.Employee;
+import com.example.introToSpringBBootApi.DTO.Employee;
+import com.example.introToSpringBBootApi.Entities.EmployeeEntity;
+import com.example.introToSpringBBootApi.Repository.EmployeeRepository;
 import com.example.introToSpringBBootApi.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
-@RequestMapping(path = "api/vi/Employee")
+@RequestMapping(path = "api/v1")
+
 public class EmployeeController {
+
     @Autowired
     public EmployeeService employeeService;
 
+    @Autowired
+    public EmployeeRepository employeeRepository;
+
+    @PostMapping("/employee")
+    public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
+
+       EmployeeEntity record =  employeeService.createEmployee(employee);
+
+       return new ResponseEntity<>(record, HttpStatus.CREATED);
+    }
 }

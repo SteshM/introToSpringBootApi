@@ -1,4 +1,4 @@
-package com.example.introToSpringBBootApi;
+package com.example.introToSpringBBootApi.DTO;
 
 
 public class Employee {
@@ -14,8 +14,8 @@ public class Employee {
             Long id,
             String name,
             Long emp_no,
-            Integer id_number,
-            Integer contact,
+            int id_number,
+            int contact,
             String email,
             String Dept_name){
         this.id = id;
@@ -52,19 +52,19 @@ public class Employee {
         this.emp_no = String.valueOf(emp_no);
     }
 
-    public Integer getId_number() {
+    public int getId_number() {
         return id_number;
     }
 
-    public void setId_number(Integer id_number) {
+    public void setId_number(int id_number) {
         this.id_number = id_number;
     }
 
-    public Integer getContact() {
+    public int getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(int contact) {
         this.contact = contact;
     }
 

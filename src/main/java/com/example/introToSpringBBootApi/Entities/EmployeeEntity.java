@@ -9,19 +9,13 @@ public class EmployeeEntity {
     @Id
     @GeneratedValue
     private Long id;
-
-    @Column(name = "name",nullable = false)
-    private String name;
-    @Column(name = "email",nullable = false)
-    private String email;
-    @Column(name = "id_number",nullable = false)
-    private Integer id_number;
-    @Column(name = "emp_number",nullable = false)
-    private String emp_number;
-    @Column(name = "dept_name",nullable = false)
-    private String dept_name;
-    @Column(name = "contact",nullable = false)
-    private Integer contact;
+    @Column()
+   public String name;
+    public String email;
+    public int idNumber;
+    public String empNumber;
+    public String deptName;
+    public int contact;
 
     public Long getId() {
         return id;
@@ -47,35 +41,48 @@ public class EmployeeEntity {
         this.email = email;
     }
 
-    public Integer getId_number() {
-        return id_number;
+    public int getIdNumber() {
+        return idNumber;
     }
 
-    public void setId_number(Integer id_number) {
-        this.id_number = id_number;
+    public void setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
     }
 
-    public String getEmp_number() {
-        return emp_number;
+    public String getEmpNumber() {
+        return empNumber;
     }
 
-    public void setEmp_number(String emp_number) {
-        this.emp_number = emp_number;
+    public void setEmpNumber(String empNumber) {
+        this.empNumber = empNumber;
     }
 
-    public String getDept_name() {
-        return dept_name;
+    public String getDeptName() {
+        return deptName;
     }
 
-    public void setDept_name(String dept_name) {
-        this.dept_name = dept_name;
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 
-    public Integer getContact() {
+    public int getContact() {
         return contact;
     }
 
-    public void setContact(Integer contact) {
+    public void setContact(int contact) {
         this.contact = contact;
+    }
+
+    public EmployeeEntity(Long id, String name, String email, int idNumber, String empNumber, String deptName, int contact) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.idNumber = idNumber;
+        this.empNumber = empNumber;
+        this.deptName = deptName;
+        this.contact = contact;
+    }
+
+    public EmployeeEntity() {
     }
 }
