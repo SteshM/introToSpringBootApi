@@ -4,6 +4,7 @@ import com.example.introToSpringBBootApi.DTO.Employee;
 import com.example.introToSpringBBootApi.Entities.EmployeeEntity;
 import com.example.introToSpringBBootApi.Repository.EmployeeRepository;
 import com.example.introToSpringBBootApi.Service.EmployeeService;
+import jakarta.websocket.server.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class EmployeeController {
 //Create employee records
     @PostMapping("/employee")
     public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
-         logger.info("about creating employee list");
+        logger.info("about creating employee list");
+        logger.info("Received Employee Payload:{}",employee);
        EmployeeEntity record =  employeeService.createEmployee(employee);
        logger.error("returning null in some fields");
 
@@ -52,11 +54,19 @@ public class EmployeeController {
         logger.info("employee fetched : {}", singleEmployee);
         return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
     }
+
+    @GetMapping("/employee")
+    public ResponseEntity<?> getEmployee(@PathParam("email") String email){
+        EmployeeEntity singleEmployee = employeeService.getEmployee(email);
+        logger.info("employee fetched : {}", singleEmployee);
+        return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
+    }
+
 //Updating details of a single student
     @PutMapping("/employee/{id}")
         public ResponseEntity<?>replaceEmployee(@PathVariable Long id , @RequestBody Employee employee){
         EmployeeEntity singleEmployee = employeeService.updateEmployee(id , employee);
-        logger.info("About to update details of an employee with id {}" , id);
+        logger.info("About to update details of an employee with email{}" , id);
         return new ResponseEntity<>(singleEmployee,HttpStatus.OK);
     }
 

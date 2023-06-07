@@ -7,9 +7,8 @@ import jakarta.persistence.*;
 @Table(name = "Employee")
 public class EmployeeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column()
    public String name;
     public String email;
     public int idNumber;
