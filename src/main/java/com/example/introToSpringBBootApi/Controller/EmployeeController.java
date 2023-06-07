@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -33,5 +34,11 @@ public class EmployeeController {
        logger.error("returning null in some fields");
 
        return new ResponseEntity<>(record, HttpStatus.CREATED);
+    }
+    @GetMapping("/employees")
+    public ResponseEntity<?> availableEmployees(){
+        List<EmployeeEntity> allData = employeeService.getEmployees();
+        logger.info("Fetched details of {}employees",allData.size());
+        return new ResponseEntity<>(allData,HttpStatus.OK);
     }
 }

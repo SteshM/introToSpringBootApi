@@ -7,6 +7,8 @@ import com.example.introToSpringBBootApi.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
     @Autowired
@@ -23,5 +25,9 @@ public class EmployeeService {
         employeeEntity.setDeptName(employee.getDept_name());
         ;
         return  employeeRepository.save(employeeEntity);
+    }
+
+    public List<EmployeeEntity> getEmployees() {
+        return employeeRepository.findAll();
     }
 }
