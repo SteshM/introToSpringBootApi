@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "Employee")
 public class EmployeeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     @Column()
    public String name;
@@ -84,5 +84,19 @@ public class EmployeeEntity {
     }
 
     public EmployeeEntity() {
+    }
+
+
+    @Override
+    public String toString() {
+        return "EmployeeEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", idNumber=" + idNumber +
+                ", empNumber='" + empNumber + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", contact=" + contact +
+                '}';
     }
 }

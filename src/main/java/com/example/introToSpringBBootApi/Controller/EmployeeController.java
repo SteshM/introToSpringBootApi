@@ -27,6 +27,8 @@ public class EmployeeController {
     @Autowired
     public EmployeeRepository employeeRepository;
 
+
+//Create employee records
     @PostMapping("/employee")
     public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
          logger.info("about creating employee list");
@@ -35,10 +37,19 @@ public class EmployeeController {
 
        return new ResponseEntity<>(record, HttpStatus.CREATED);
     }
+
+//  Retrieving records of all employees
     @GetMapping("/employees")
     public ResponseEntity<?> availableEmployees(){
         List<EmployeeEntity> allData = employeeService.getEmployees();
         logger.info("Fetched details of {}employees",allData.size());
         return new ResponseEntity<>(allData,HttpStatus.OK);
+    }
+
+    @GetMapping("/employee/{id}")
+    public ResponseEntity<?> getEmployee(@PathVariable Long id){
+        EmployeeEntity singleEmployee = employeeService.getEmployee(id);
+        logger.info("employee fetched : {}", singleEmployee);
+        return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
     }
 }

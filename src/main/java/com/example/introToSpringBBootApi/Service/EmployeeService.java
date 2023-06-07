@@ -30,4 +30,10 @@ public class EmployeeService {
     public List<EmployeeEntity> getEmployees() {
         return employeeRepository.findAll();
     }
+
+    public EmployeeEntity getEmployee(Long id) {
+        EmployeeEntity employeeEntity = employeeRepository.findEmployeeById(id);
+        System.out.println("data"+ employeeEntity);
+        return employeeEntity;
+    }
 }
