@@ -60,6 +60,14 @@ public class EmployeeController {
         return new ResponseEntity<>(singleEmployee,HttpStatus.OK);
     }
 
+    //deleting a record
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id){
+        employeeService.deleteById(id);
+    }
+
+
 
 
 }
