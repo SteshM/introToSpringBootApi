@@ -57,4 +57,10 @@ public class EmployeeService {
     public void deleteById(long id) {
         employeeRepository.deleteById(id);
     }
+
+
+
+    public EmployeeEntity getEmployeeEntityByIdAndEmail(Long id, String email) {
+        return employeeRepository.getEmployeeEntityByIdAndEmail(id ,email);
+    }
 }

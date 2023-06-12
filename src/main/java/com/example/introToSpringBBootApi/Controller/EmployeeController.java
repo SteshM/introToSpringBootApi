@@ -54,12 +54,19 @@ public class EmployeeController {
         logger.info("employee fetched : {}", singleEmployee);
         return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
     }
-
+//fetching employees details by email
     @GetMapping("/employee")
     public ResponseEntity<?> getEmployee(@PathParam("email") String email){
         EmployeeEntity singleEmployee = employeeService.getEmployee(email);
         logger.info("employee fetched : {}", singleEmployee);
         return new ResponseEntity<>(singleEmployee , HttpStatus.OK);
+    }
+//    fetching employees details by email and id
+
+    @GetMapping("/employees/{id}/{email}")
+    public EmployeeEntity getEmployeeDetails(@PathVariable Long id, @PathVariable String email){
+        EmployeeEntity singleEmployee = employeeService.getEmployeeEntityByIdAndEmail(id, email);
+        return singleEmployee;
     }
 
 //Updating details of a single student
